@@ -1,1 +1,1 @@
-# chitchat-server
+# Welcome to chitchat server
