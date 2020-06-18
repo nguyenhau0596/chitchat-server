@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+var Response = require('./../dto/response');
+
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express server' });
+  const data = new Response({}, true, 'Welcome to Chitchat server');
+  res.json(data);
 });
 
 module.exports = router;
