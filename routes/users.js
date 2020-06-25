@@ -1,12 +1,15 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var Response = require('./../dto/response');
+const Response = require('./../dto/response');
+const db = require('./../db');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
   const data = new Response({ foo: 12, bar: 'Chitchat user' });
-  res.json(data);
+  db.query('SELECT * from foo', [], (err, response) => {
+    data.setData(response.rows);
+    res.json(data);
+  });
 });
 
 module.exports = router;
